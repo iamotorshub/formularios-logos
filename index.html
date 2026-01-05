@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Gratis - IA MotorsHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-logo {
+            margin-bottom: 15px;
+        }
+        
+        .header-logo img {
+            max-width: 320px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .header h1 {
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .benefits-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f2 100%);
+            border-left: 5px solid #1a9bd7;
+            padding: 28px;
+            margin: 40px 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(26, 155, 215, 0.1);
+        }
+        
+        .benefits-box h3 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        
+        .benefits-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .benefits-box li {
+            color: #5d6d7e;
+            font-size: 16px;
+            margin-bottom: 12px;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        
+        .benefits-box li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+        
+        .form-container {
+            padding: 0 40px 45px;
+        }
+        
+        .form-group {
+            margin-bottom: 26px;
+        }
+        
+        label {
+            display: block;
+            color: #2c3e50;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        label .required {
+            color: #e74c3c;
+            margin-left: 4px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border: 2.5px solid #e0e6ed;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+        }
+        
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1a9bd7;
+            box-shadow: 0 0 0 4px rgba(26, 155, 215, 0.12);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .checkbox-group {
+            margin-top: 12px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        
+        .checkbox-item:hover {
+            background: #f8fbfd;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: #1a9bd7;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 14px;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border: 2.5px solid #e0e6ed;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ffffff;
+        }
+        
+        .radio-item:hover {
+            border-color: #1a9bd7;
+            background: #f8fbfd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 155, 215, 0.15);
+        }
+        
+        .radio-item:has(input:checked) {
+            border-color: #1a9bd7;
+            background: linear-gradient(135deg, #f8fbfd 0%, #e8f4f8 100%);
+            box-shadow: 0 4px 15px rgba(26, 155, 215, 0.2);
+        }
+        
+        .radio-item input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #1a9bd7;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .radio-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            flex: 1;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a9bd7 0%, #0f7cb3 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(26, 155, 215, 0.4);
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26, 155, 215, 0.6);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .disclaimer {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        .footer .secure {
+            color: #27ae60;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        
+        .footer .copyright {
+            color: #bdc3c7;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .footer .tagline {
+            color: #95a5a6;
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                padding: 20px 25px;
+            }
+            
+            .header-logo img {
+                max-width: 240px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .benefits-box {
+                margin: 30px 25px 25px;
+                padding: 22px;
+            }
+            
+            .form-container {
+                padding: 0 25px 35px;
+            }
+            
+            .footer {
+                padding: 25px 25px;
+            }
+            
+            .radio-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-logo">
+                <img src="logo.png" alt="IA MotorsHub">
+            </div>
+            <h1>🚀 Preview Gratis de tu Web con IA</h1>
+            <p class="subtitle">10 días de prueba • Sin tarjeta • Sin compromiso</p>
+        </div>
+        
+        <div class="benefits-box">
+            <h3>📦 Lo que recibís en 48 horas:</h3>
+            <ul>
+                <li><strong>Diseño web moderno</strong> ultrarrápido con React</li>
+                <li><strong>Agente IA conversacional 24/7</strong> que nunca duerme</li>
+                <li><strong>Sistema de turnos automático</strong> integrado</li>
+                <li><strong>SEO optimizado</strong> para tu ciudad</li>
+                <li><strong>10 días de prueba GRATIS</strong> completa</li>
+            </ul>
+        </div>
+        
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Nombre completo <span class="required">*</span></label>
+                    <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" name="email" placeholder="tu@inmobiliaria.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Teléfono / WhatsApp <span class="required">*</span></label>
+                    <input type="tel" name="telefono" placeholder="+34 XXX XXX XXX" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nombre de tu Inmobiliaria <span class="required">*</span></label>
+                    <input type="text" name="inmobiliaria" placeholder="Ej: Inmobiliaria Barcelona Premium" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Website actual (si tenés)</label>
+                    <input type="url" name="website" placeholder="https://tuinmobiliaria.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>¿Qué te interesa más? <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="diseno" name="intereses" value="Diseño web moderno">
+                            <label for="diseno">Diseño web moderno</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="chatbot" name="intereses" value="Chatbot IA 24/7">
+                            <label for="chatbot">Chatbot IA 24/7</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="turnos" name="intereses" value="Sistema de turnos">
+                            <label for="turnos">Sistema de turnos automático</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="seo" name="intereses" value="SEO optimizado">
+                            <label for="seo">SEO optimizado</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="todo" name="intereses" value="Todo lo anterior">
+                            <label for="todo"><strong>🔥 Todo lo anterior</strong></label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>¿Cuántas propiedades gestionás? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="prop1" name="propiedades" value="Menos de 50" required>
+                            <label for="prop1">Menos de 50</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="prop2" name="propiedades" value="50-100">
+                            <label for="prop2">50-100</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="prop3" name="propiedades" value="100-200">
+                            <label for="prop3">100-200</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="prop4" name="propiedades" value="Más de 200">
+                            <label for="prop4">Más de 200</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>¿Cuándo te vendría bien hacer la demo?</label>
+                    <input type="text" name="fecha_demo" placeholder="Ej: Esta semana por la mañana / Próximo lunes 15hs">
+                </div>
+                
+                <div class="form-group">
+                    <label>Comentarios adicionales</label>
+                    <textarea name="comentarios" placeholder="Contanos cualquier detalle que nos ayude a personalizar tu preview..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">✨ Quiero mi preview gratis</button>
+                <p class="disclaimer">No se requiere tarjeta de crédito.</p>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <p class="secure">🔒 Tus datos están seguros y protegidos</p>
+            <p class="copyright">IA MotorsHub © 2026 | Bahía Blanca, Argentina</p>
+            <p class="tagline">Soluciones de Inteligencia Artificial para Empresas</p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (key === 'intereses') {
+                    if (!data[key]) data[key] = [];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            console.log('📊 Datos capturados:', data);
+            
+            // TODO: Integrar con webhook de n8n/Make.com
+            // fetch('TU_WEBHOOK_URL_AQUI', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data)
+            // });
+            
+            alert('🎉 ¡Genial! Tu solicitud fue enviada.\n\n✅ Te contactamos en las próximas 48 horas con tu preview personalizado.\n\n🚀 Mientras tanto, podés ver nuestro portafolio en iamotorshub.com');
+            
+            this.reset();
+        });
+    </script>
+</body>
+</html>
