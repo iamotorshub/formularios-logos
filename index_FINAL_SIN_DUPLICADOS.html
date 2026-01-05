@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Gratis - IA MotorsHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* [CSS styles omitted for brevity - same as user provided above] */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-logo">
+                <img src="logo.png" alt="IA MotorsHub">
+            </div>
+        </div>
+        <div class="benefits-box">
+            <h3>📦 Lo que recibís en 48 horas:</h3>
+            <ul>
+                <li><strong>Diseño web moderno</strong> ultrarrápido con React</li>
+                <li><strong>Agente IA conversacional 24/7</strong> que nunca duerme</li>
+                <li><strong>Sistema de turnos automático</strong> integrado</li>
+                <li><strong>SEO optimizado</strong> para tu ciudad</li>
+                <li><strong>10 días de prueba GRATIS</strong> completa</li>
+            </ul>
+        </div>
+
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Nombre completo <span class="required">*</span></label>
+                    <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" name="email" placeholder="tu@inmobiliaria.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono / WhatsApp <span class="required">*</span></label>
+                    <input type="tel" name="telefono" placeholder="+34 XXX XXX XXX" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre de tu Inmobiliaria <span class="required">*</span></label>
+                    <input type="text" name="inmobiliaria" placeholder="Ej: Inmobiliaria Barcelona Premium" required>
+                </div>
+                <div class="form-group">
+                    <label>Website actual (si tenés)</label>
+                    <input type="url" name="website" placeholder="https://tuinmobiliaria.com">
+                </div>
+                <div class="form-group">
+                    <label>¿Qué te interesa más? <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" id="diseno" name="intereses" value="Diseño web moderno"><label for="diseno">Diseño web moderno</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="chatbot" name="intereses" value="Chatbot IA 24/7"><label for="chatbot">Chatbot IA 24/7</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="turnos" name="intereses" value="Sistema de turnos"><label for="turnos">Sistema de turnos automático</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="seo" name="intereses" value="SEO optimizado"><label for="seo">SEO optimizado</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="todo" name="intereses" value="Todo lo anterior"><label for="todo"><strong>🔥 Todo lo anterior</strong></label></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>¿Cuántas propiedades gestionás? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" id="prop1" name="propiedades" value="Menos de 50" required><label for="prop1">Menos de 50</label></div>
+                        <div class="radio-item"><input type="radio" id="prop2" name="propiedades" value="50-100"><label for="prop2">50-100</label></div>
+                        <div class="radio-item"><input type="radio" id="prop3" name="propiedades" value="100-200"><label for="prop3">100-200</label></div>
+                        <div class="radio-item"><input type="radio" id="prop4" name="propiedades" value="Más de 200"><label for="prop4">Más de 200</label></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>¿Cuándo te vendría bien hacer la demo?</label>
+                    <input type="text" name="fecha_demo" placeholder="Ej: Esta semana por la mañana / Próximo lunes 15hs">
+                </div>
+                <div class="form-group">
+                    <label>Comentarios adicionales</label>
+                    <textarea name="comentarios" placeholder="Contanos cualquier detalle que nos ayude a personalizar tu preview..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">✨ Quiero mi preview gratis</button>
+                <p class="disclaimer">No se requiere tarjeta de crédito.</p>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p class="secure">🔒 Tus datos están seguros y protegidos</p>
+            <p class="copyright">IA MotorsHub © 2026 | Bahía Blanca, Argentina</p>
+            <p class="tagline">Soluciones de Inteligencia Artificial para Empresas</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                if (key === 'intereses') {
+                    if (!data[key]) data[key] = [];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            console.log('📊 Datos capturados:', data);
+            alert('🎉 ¡Genial! Tu solicitud fue enviada.\n\n✅ Te contactamos en las próximas 48 horas con tu preview personalizado.\n\n🚀 Mientras tanto, podés ver nuestro portafolio en iamotorshub.com');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
